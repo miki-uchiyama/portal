@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>人事評価制度について｜職位・職務内容・賃金体系</title>
+<title>キャリアパス要件Ⅰ｜職位・職務内容・賃金体系</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -48,16 +48,15 @@
     overflow: hidden;
     margin-bottom: 12px;
   }
-  .card-head {
-    padding: 12px 20px;
-    font-size: 15px;
-    font-weight: bold;
-    color: #fff;
+
+  /* ★テーブルをスマホ対応に：横スクロール */
+  .table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .card-body { padding: 0; }
 
   /* 職位テーブル */
-  .rank-table { width: 100%; border-collapse: collapse; }
+  .rank-table { width: 100%; min-width: 480px; border-collapse: collapse; }
   .rank-table th {
     background: #7F77DD;
     color: #fff;
@@ -65,6 +64,7 @@
     padding: 10px 14px;
     text-align: left;
     font-weight: bold;
+    white-space: nowrap;
   }
   .rank-table td {
     padding: 14px 16px;
@@ -78,12 +78,12 @@
   .badge {
     display: inline-block;
     border-radius: 10px;
-    padding: 6px 4px;
-    font-size: 14px;
+    padding: 6px 14px;
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
-    min-width: 95px;
-    line-height: 1.2;
+    min-width: 90px;
+    line-height: 1.4;
     white-space: nowrap;
   }
   .badge small { display: block; font-size: 11px; font-weight: normal; margin-top: 2px; }
@@ -108,7 +108,7 @@
     white-space: nowrap;
   }
 
-  .req-text { font-size: 10px; color: #3d3d3a; line-height: 1.6; word-break: keep-all; }
+  .req-text { font-size: 14px; color: #3d3d3a; line-height: 1.8; }
 
   /* 資格手当 */
   .shikaku-grid {
@@ -121,7 +121,7 @@
     border-radius: 12px;
     padding: 14px 20px;
     text-align: center;
-    min-width: 120px;
+    flex: 1 1 120px;
   }
   .shikaku-chip .s-name { font-size: 13px; margin-bottom: 4px; }
   .shikaku-chip .s-amt { font-size: 20px; font-weight: bold; color: #2C2C2A; }
@@ -132,11 +132,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
-  @media (max-width: 600px) {
-    .duty-grid { grid-template-columns: 1fr; }
-    .rank-table th:nth-child(2),
-    .rank-table td:nth-child(2) { display: none; }
-  }
   .duty-card {
     background: #fff;
     border: 1px solid #D3D1C7;
@@ -144,13 +139,10 @@
     overflow: hidden;
   }
   .duty-head {
-    padding: 10px 8px;
-    font-size: 13px;
+    padding: 10px 16px;
+    font-size: 14px;
     font-weight: bold;
     color: #fff;
-    background: #5DCAA5;
-    white-space: nowrap;
-    text-align: center;
   }
   .duty-list { list-style: none; padding: 12px 16px; }
   .duty-list li {
@@ -184,23 +176,14 @@
     padding-top: 16px;
     border-top: 1px solid #D3D1C7;
   }
-/* スマホ向けの調整設定 */
-@media (max-width: 600px) {
-  .duty-row {
-    flex-direction: column !important; /* 横並びを縦並びに変える */
+
+  /* ★スマホ対応 */
+  @media (max-width: 600px) {
+    .header { padding: 20px 16px; }
+    .header h1 { font-size: 20px; }
+    .duty-grid { grid-template-columns: 1fr; }
+    .shikaku-chip { flex: 1 1 calc(50% - 12px); }
   }
-  .duty-item {
-    width: 100% !important; /* 幅をいっぱいまで広げる */
-    border-bottom: 1px solid #eee;
-  }
-  .req-text {
-    font-size: 14px !important;
-    display: block !important;
-    visibility: visible !important;
-    color: #333 !important;
-  }
-}
- 
 </style>
 </head>
 <body>
@@ -208,7 +191,7 @@
 
   <!-- ヘッダー -->
   <div class="header">
-    <h1>人事評価制度について</h1>
+    <h1>キャリアパス要件 Ⅰ</h1>
     <p>職位・職務内容・任用要件・賃金体系の整備</p>
     <p class="meta">就労継続支援・共同生活援助　共通</p>
   </div>
@@ -218,58 +201,60 @@
     <div class="section-title">👤 正社員の職位と賃金体系</div>
     <div class="section-desc">職位は5段階です。上の職位ほど役割が増え、それに応じた手当がつきます。</div>
     <div class="card">
-      <table class="rank-table">
-        <thead>
-          <tr>
-            <th style="width:120px;">職位</th>
-            <th>任用要件</th>
-            <th>手当</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="badge badge-mgr">管理者<small>マネジャー</small></span></td>
-            <td class="req-text">法人が管理者として任命した者<br>有資格者または相当の実務経験を有する者</td>
-            <td>
-              <span class="pay-chip">役職手当 25,000円</span>
-              <span class="pay-chip">職能手当 10,000円</span>
-              <span class="pay-chip">＋資格手当</span>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge badge-lead">主任<small>リーダー</small></span></td>
-            <td class="req-text">勤続3年以上<br>独力で業務遂行できること<br>管理者が主任職にふさわしいと認めた者</td>
-            <td>
-              <span class="pay-chip">役職手当 5,000円</span>
-              <span class="pay-chip">職能手当 10,000円</span>
-              <span class="pay-chip">＋資格手当</span>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge badge-hi">一般職員<small>上級</small></span></td>
-            <td class="req-text">勤続5年以上</td>
-            <td>
-              <span class="pay-chip">職能手当 10,000円</span>
-              <span class="pay-chip">＋資格手当</span>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge badge-mid">一般職員<small>中級</small></span></td>
-            <td class="req-text">勤続2年以上〜5年未満</td>
-            <td>
-              <span class="pay-chip">職能手当 5,000円</span>
-              <span class="pay-chip">＋資格手当</span>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge badge-lo">一般職員<small>初級</small></span></td>
-            <td class="req-text">入社時〜勤続2年未満</td>
-            <td>
-              <span class="pay-chip">資格手当のみ</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th style="width:120px;">職位</th>
+              <th>任用要件</th>
+              <th>手当</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-mgr">管理者<small>マネジャー</small></span></td>
+              <td class="req-text">法人が管理者として任命した者<br>有資格者または相当の実務経験を有する者</td>
+              <td>
+                <span class="pay-chip">役職手当 25,000円</span>
+                <span class="pay-chip">職能手当 10,000円</span>
+                <span class="pay-chip">＋資格手当</span>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-lead">主任<small>リーダー</small></span></td>
+              <td class="req-text">勤続3年以上<br>独力で業務遂行できること<br>管理者が主任職にふさわしいと認めた者</td>
+              <td>
+                <span class="pay-chip">役職手当 5,000円</span>
+                <span class="pay-chip">職能手当 10,000円</span>
+                <span class="pay-chip">＋資格手当</span>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-hi">一般職員<small>上級</small></span></td>
+              <td class="req-text">勤続5年以上</td>
+              <td>
+                <span class="pay-chip">職能手当 10,000円</span>
+                <span class="pay-chip">＋資格手当</span>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-mid">一般職員<small>中級</small></span></td>
+              <td class="req-text">勤続2年以上〜5年未満</td>
+              <td>
+                <span class="pay-chip">職能手当 5,000円</span>
+                <span class="pay-chip">＋資格手当</span>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-lo">一般職員<small>初級</small></span></td>
+              <td class="req-text">入社時〜勤続2年未満</td>
+              <td>
+                <span class="pay-chip">資格手当のみ</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -278,40 +263,42 @@
     <div class="section-title">👥 パート職員の職位と賃金体系</div>
     <div class="section-desc">正社員と同じ3段階です。勤続年数に応じて時給が上がる仕組みです。</div>
     <div class="card">
-      <table class="rank-table">
-        <thead>
-          <tr>
-            <th style="width:120px;">職位</th>
-            <th>任用要件</th>
-            <th>時給への上乗せ</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="badge badge-p-hi">パート職員<small>上級</small></span></td>
-            <td class="req-text">勤続5年以上</td>
-            <td>
-              <span class="pay-chip">＋40円／時</span>
-              <span class="pay-chip">＋資格手当</span>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge badge-p-mid">パート職員<small>中級</small></span></td>
-            <td class="req-text">勤続2年以上〜5年未満</td>
-            <td>
-              <span class="pay-chip">＋20円／時</span>
-              <span class="pay-chip">＋資格手当</span>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge badge-p-lo">パート職員<small>初級</small></span></td>
-            <td class="req-text">採用時〜勤続2年未満</td>
-            <td>
-              <span class="pay-chip">資格手当のみ</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-scroll">
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th style="width:120px;">職位</th>
+              <th>任用要件</th>
+              <th>時給への上乗せ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-p-hi">パート職員<small>上級</small></span></td>
+              <td class="req-text">勤続5年以上</td>
+              <td>
+                <span class="pay-chip">＋40円／時</span>
+                <span class="pay-chip">＋資格手当</span>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-p-mid">パート職員<small>中級</small></span></td>
+              <td class="req-text">勤続2年以上〜5年未満</td>
+              <td>
+                <span class="pay-chip">＋20円／時</span>
+                <span class="pay-chip">＋資格手当</span>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-p-lo">パート職員<small>初級</small></span></td>
+              <td class="req-text">採用時〜勤続2年未満</td>
+              <td>
+                <span class="pay-chip">資格手当のみ</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -396,7 +383,7 @@
       ・管理者（就労継続支援）が生活支援員を兼務する場合、処遇改善加算の対象となります。<br>
       ・管理者兼サービス管理責任者（共同生活援助）が雇用職員の場合も処遇改善加算の対象となります。<br>
       ・本規程は就業規則・賃金規程と整合させ、全職員に周知します。<br>
-      ・<strong>適用日：2026年　4月　1日</strong>
+      ・<strong>適用日：　　　　年　　　月　　　日</strong>
     </div>
   </div>
 
